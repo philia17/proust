@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swann's Way: The Madeleine Episode - Reading Circle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #faf9f7;
+            --bg-secondary: #f0ede8;
+            --gold: #8b6914;
+            --gold-light: #b8922a;
+            --gold-dark: #6b5210;
+            --text-primary: #2c2c2c;
+            --text-secondary: #5a5a5a;
+            --accent: #8b7355;
+            --border-color: #d4d0c8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            background: #e8e6e1;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 16:9 Container */
+        .presentation-container {
+            width: 100vw;
+            height: 56.25vw;
+            max-height: 100vh;
+            max-width: 177.78vh;
+            position: relative;
+            background: var(--bg-primary);
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(139, 105, 20, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 115, 85, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(240, 237, 232, 0.8) 0%, transparent 70%);
+        }
+
+        .presentation {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 5% 8%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(15px);
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        /* Typography - >=32pt titles, >=20pt body */
+        h1 {
+            font-family: 'Libre Baskerville', 'Georgia', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            margin-bottom: 0.15em;
+            color: var(--text-primary);
+            line-height: 1.15;
+        }
+
+        h2 {
+            font-family: 'Libre Baskerville', 'Georgia', serif;
+            font-size: 3.6rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            margin-bottom: 0.3em;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 0.8em;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        p {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 0.6em;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 1em;
+            font-style: italic;
+        }
+
+        .date {
+            font-size: 1.1rem;
+            color: #888;
+            margin-top: 1.8em;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* Quotes */
+        .quote {
+            font-size: 1.65rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            padding: 1.5em 1.8em;
+            border-left: 3px solid var(--gold);
+            background: linear-gradient(90deg, rgba(139, 105, 20, 0.06) 0%, transparent 100%);
+            margin: 1em auto;
+            max-width: 750px;
+            text-align: left;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '"';
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4rem;
+            color: var(--gold-dark);
+            opacity: 0.25;
+            position: absolute;
+            top: -0.15em;
+            left: 0.25em;
+            line-height: 1;
+        }
+
+        .section-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--gold);
+            margin-bottom: 0.6em;
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        /* Theme points */
+        .theme-points {
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Memory cards - three column layout */
+        .memory-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+
+        .memory-card {
+            background: linear-gradient(145deg, rgba(255, 250, 240, 0.95), rgba(252, 248, 235, 0.9));
+            border: 1px solid rgba(139, 105, 20, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(139, 105, 20, 0.15);
+            border-color: rgba(139, 105, 20, 0.4);
+        }
+
+        .memory-card:hover::before {
+            opacity: 1;
+        }
+
+        .memory-card.expanded {
+            background: linear-gradient(145deg, rgba(255, 252, 245, 1), rgba(252, 248, 235, 0.95));
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .memory-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin: 0 0 0.25rem 0;
+            font-weight: 700;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .card-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .memory-card.expanded .card-detail {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(139, 105, 20, 0.15);
+        }
+
+        .card-detail p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .card-toggle {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .memory-card:hover .card-toggle {
+            color: var(--gold-dark);
+        }
+
+        .memory-card.expanded .card-toggle {
+            display: none;
+        }
+
+        /* Card detail modal overlay */
+        .card-detail-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-detail-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .card-detail-content {
+            background: linear-gradient(145deg, rgba(255, 252, 245, 1), rgba(252, 248, 235, 0.98));
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 80%;
+            max-height: 85vh;
+            overflow-y: auto;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(139, 105, 20, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-detail-modal.active .card-detail-content {
+            transform: scale(1);
+        }
+
+        .card-detail-content .card-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-detail-content h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin: 0 0 0.5rem 0;
+            font-weight: 700;
+        }
+
+        .card-detail-content .card-subtitle {
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 2rem 0;
+        }
+
+        .card-detail-content .card-detail-text {
+            font-size: 1.3rem;
+            color: #555;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .card-detail-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            transition: transform 0.2s ease;
+        }
+
+        .card-detail-close:hover {
+            transform: scale(1.2);
+        }
+
+        /* Slide 11 - larger text */
+        .slide[data-slide="11"] .card-description {
+            font-size: 1.1rem;
+        }
+
+        .slide[data-slide="11"] .card-detail p {
+            font-size: 1.05rem;
+        }
+
+        .slide[data-slide="11"] .memory-card h3 {
+            font-size: 1.3rem;
+        }
+
+        /* ===== HOVER EFFECTS ===== */
+
+        /* Navigation - hidden */
+        .nav {
+            display: none;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+            transition: width 0.4s ease;
+            z-index: 100;
+            box-shadow: 0 0 8px rgba(139, 105, 20, 0.3);
+        }
+
+        /* Decorative */
+        .decorative-line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 1em auto;
+        }
+
+        .highlight {
+            color: var(--gold);
+        }
+
+        .small-text {
+            font-size: 1.25rem;
+            color: #666;
+            margin-top: 1.3em;
+        }
+
+        /* Images */
+        .slide-image {
+            max-width: 280px;
+            max-height: 220px;
+            border-radius: 6px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin: 1em auto;
+            display: block;
+            border: 1px solid rgba(139, 105, 20, 0.15);
+        }
+
+        .slide-image-small {
+            max-width: 200px;
+            max-height: 160px;
+        }
+
+        .slide-image-large {
+            max-width: 500px;
+            max-height: 350px;
+            margin: 0.5em auto;
+        }
+
+        /* Closing quote */
+        .closing-quote {
+            font-size: 1.7rem;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 1.2em;
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        /* Keyboard hints - hidden */
+        .keyboard-hint {
+            display: none !important;
+        }
+
+        .keyboard-hint kbd {
+            background: rgba(139, 105, 20, 0.1);
+            padding: 2px 8px;
+            border-radius: 3px;
+            border: 1px solid rgba(139, 105, 20, 0.2);
+            color: var(--gold);
+        }
+
+        /* Slide number indicator */
+        .slide-indicator {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            z-index: 100;
+        }
+
+        /* Editor credit */
+        .editor-credit {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 0.75rem;
+            color: #999;
+            font-style: italic;
+            z-index: 100;
+        }
+
+        /* Table of Contents overlay */
+        .toc-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(250, 249, 247, 0.97);
+            z-index: 200;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .toc-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .toc-content {
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2em;
+        }
+
+        .toc-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1.2em;
+            text-align: center;
+        }
+
+        .toc-item {
+            padding: 0.7em 0.9em;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .toc-item:hover {
+            background: rgba(139, 105, 20, 0.08);
+            color: var(--text-primary);
+        }
+
+        .toc-item .toc-num {
+            color: var(--gold-dark);
+            margin-right: 0.8em;
+        }
+
+        .toc-close {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .toc-close:hover {
+            color: var(--gold);
+        }
+
+        /* Character list */
+        .character-list {
+            text-align: left;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* ===== HOVER EFFECTS ===== */
+
+        /* Theme points hover */
+        .theme-point {
+            font-size: 1.6rem;
+            padding: 0.5em 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7em;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border-radius: 6px;
+            margin: 0 -0.5em;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+        }
+
+        .theme-point:hover {
+            background: rgba(139, 105, 20, 0.08);
+            transform: translateX(4px);
+            color: var(--text-primary);
+        }
+
+        .theme-point::before {
+            content: '✦';
+            color: var(--gold);
+            font-size: 0.7rem;
+            margin-top: 0.3em;
+            transition: all 0.25s ease;
+        }
+
+        .theme-point:hover::before {
+            color: var(--gold-light);
+            transform: scale(1.2);
+        }
+
+        /* Clickable theme points for Reading Tasks */
+        .theme-point.clickable {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            padding: 1em 1.2em;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            margin-bottom: 0.5em;
+        }
+
+        .theme-point.clickable:hover {
+            background: rgba(139, 105, 20, 0.08);
+            transform: translateX(4px);
+            border-color: rgba(139, 105, 20, 0.2);
+        }
+
+        .theme-point.clickable::after {
+            content: '▼';
+            position: absolute;
+            right: 1em;
+            font-size: 0.6rem;
+            color: var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-point.clickable.expanded::after {
+            transform: rotate(180deg);
+        }
+
+        .task-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 1em;
+            background: rgba(139, 105, 20, 0.05);
+            border-radius: 6px;
+            margin-top: 0.5em;
+        }
+
+        .theme-point.clickable.expanded .task-answer {
+            max-height: 200px;
+            padding: 0.8em 1em;
+        }
+
+        .task-answer p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .task-answer em {
+            color: var(--gold-dark);
+            font-style: normal;
+        }
+
+        /* Task Question Styles */
+        .task-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .task-question strong {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .task-hint {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .quote-bilingual:hover .task-hint {
+            opacity: 1;
+        }
+
+        .task-question-text {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            margin-top: 0.3em;
+            font-style: bold;
+        }
+
+        .task-answer {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 3.0rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            padding: 0.8em 1em;
+            border-left: 3px solid var(--accent);
+            background: rgba(139, 115, 85, 0.05);
+            margin-top: 0;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateY(-10px);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .task-answer.revealed {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 0.8em;
+        }
+
+        /* Quote hover effects */
+        .quote {
+            font-size: 1.65rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            padding: 1.5em 1.8em;
+            border-left: 3px solid var(--gold);
+            background: linear-gradient(90deg, rgba(139, 105, 20, 0.06) 0%, transparent 100%);
+            margin: 1em auto;
+            max-width: 750px;
+            text-align: left;
+            font-style: italic;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .quote:hover {
+            border-left-color: var(--gold-light);
+            background: linear-gradient(90deg, rgba(139, 105, 20, 0.12) 0%, transparent 100%);
+            box-shadow: 0 4px 20px rgba(139, 105, 20, 0.1);
+        }
+
+        /* Bilingual Quote Styles */
+        .quote-bilingual {
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .quote-english {
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .quote-english::after {
+            content: 'Click for French';
+            display: inline-block;
+            font-size: 0.65rem;
+            font-family: 'Libre Baskerville', serif;
+            color: var(--gold);
+            margin-left: 0.5em;
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+
+        .quote-bilingual:hover .quote-english::after {
+            opacity: 1;
+        }
+
+        .quote-bilingual:hover .quote-english {
+            color: var(--gold-dark);
+        }
+
+        .quote-french {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            padding: 0.8em 1.2em;
+            border-left: 3px solid var(--accent);
+            background: rgba(139, 115, 85, 0.05);
+            margin-top: 0;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateY(-10px);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .quote-french.revealed {
+            max-height: 300px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 1em;
+        }
+
+        .quote-french::before {
+            content: 'français';
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 0.3em;
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        /* Character list hover */
+        .character-item {
+            font-size: 1.25rem;
+            padding: 0.8em 0;
+            border-bottom: 1px solid rgba(139, 105, 20, 0.12);
+            display: flex;
+            align-items: baseline;
+            gap: 0.8em;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border-radius: 6px;
+            margin: 0 -0.5em;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+        }
+
+        .character-item:hover {
+            background: rgba(139, 105, 20, 0.1);
+            transform: translateX(6px);
+        }
+
+        .character-item:hover .character-name {
+            color: var(--gold-light);
+        }
+
+        /* Discussion questions hover */
+        .discussion-q {
+            font-size: 1.7rem;
+            color: var(--text-primary);
+            padding: 2em;
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.06) 0%, rgba(139, 115, 85, 0.06) 100%);
+            border-radius: 10px;
+            max-width: 700px;
+            margin: 0 auto;
+            border: 1px solid rgba(139, 105, 20, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .discussion-q:hover {
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.1) 0%, rgba(139, 115, 85, 0.1) 100%);
+            box-shadow: 0 6px 25px rgba(139, 105, 20, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Discussion brainstorming bubbles */
+        .discussion-bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .discussion-bubbles .bubble {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Different colors for bubbles */
+        .discussion-bubbles .bubble:nth-child(3n+1) {
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.92) 0%, rgba(218, 165, 32, 0.92) 100%);
+        }
+        .discussion-bubbles .bubble:nth-child(3n+2) {
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.92) 0%, rgba(205, 133, 63, 0.92) 100%);
+        }
+        .discussion-bubbles .bubble:nth-child(3n+3) {
+            background: linear-gradient(135deg, rgba(85, 107, 47, 0.92) 0%, rgba(122, 160, 76, 0.92) 100%);
+        }
+        .discussion-bubbles .bubble:nth-child(4n+1) {
+            background: linear-gradient(135deg, rgba(70, 130, 180, 0.92) 0%, rgba(100, 149, 237, 0.92) 100%);
+        }
+        .discussion-bubbles .bubble:nth-child(4n+2) {
+            background: linear-gradient(135deg, rgba(178, 34, 34, 0.92) 0%, rgba(220, 20, 60, 0.92) 100%);
+        }
+
+        /* Bubbles appear on click */
+        .discussion-q.active .bubble {
+            opacity: 1;
+        }
+
+        @keyframes bubbleJump {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.3);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(calc(-50% + var(--tx, 0px) * 0.35), calc(-50% + var(--ty, -30px))) scale(1);
+            }
+        }
+
+        .discussion-q.active .bubble {
+            animation: bubbleJump 2s ease-out forwards;
+        }
+
+        /* Staggered delays for 18 bubbles - more spread out */
+        .discussion-q.active .bubble:nth-child(1) { animation-delay: 0s; }
+        .discussion-q.active .bubble:nth-child(2) { animation-delay: 0.15s; }
+        .discussion-q.active .bubble:nth-child(3) { animation-delay: 0.3s; }
+        .discussion-q.active .bubble:nth-child(4) { animation-delay: 0.45s; }
+        .discussion-q.active .bubble:nth-child(5) { animation-delay: 0.6s; }
+        .discussion-q.active .bubble:nth-child(6) { animation-delay: 0.75s; }
+        .discussion-q.active .bubble:nth-child(7) { animation-delay: 0.9s; }
+        .discussion-q.active .bubble:nth-child(8) { animation-delay: 1.05s; }
+        .discussion-q.active .bubble:nth-child(9) { animation-delay: 1.2s; }
+        .discussion-q.active .bubble:nth-child(10) { animation-delay: 1.35s; }
+        .discussion-q.active .bubble:nth-child(11) { animation-delay: 1.5s; }
+        .discussion-q.active .bubble:nth-child(12) { animation-delay: 1.65s; }
+        .discussion-q.active .bubble:nth-child(13) { animation-delay: 1.8s; }
+        .discussion-q.active .bubble:nth-child(14) { animation-delay: 1.95s; }
+        .discussion-q.active .bubble:nth-child(15) { animation-delay: 2.1s; }
+        .discussion-q.active .bubble:nth-child(16) { animation-delay: 2.25s; }
+        .discussion-q.active .bubble:nth-child(17) { animation-delay: 2.4s; }
+        .discussion-q.active .bubble:nth-child(18) { animation-delay: 2.55s; }
+
+        /* Image hover - lift and zoom */
+        .slide-image {
+            max-width: 280px;
+            max-height: 220px;
+            border-radius: 6px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin: 1em auto;
+            display: block;
+            border: 1px solid rgba(139, 105, 20, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .slide-image:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+        }
+
+        /* External link indicators */
+        .external-link {
+            color: var(--gold);
+            text-decoration: none;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .external-link::after {
+            content: ' ↗';
+            font-size: 0.8em;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .external-link:hover::after {
+            opacity: 1;
+        }
+
+        .external-link:hover {
+            color: var(--gold-light);
+        }
+
+        /* YouTube link with play button */
+        .youtube-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+            color: var(--gold);
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border: 1px solid rgba(139, 105, 20, 0.3);
+            border-radius: 6px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .youtube-link:hover {
+            background: rgba(139, 105, 20, 0.1);
+            border-color: var(--gold);
+            transform: scale(1.02);
+        }
+
+        .youtube-link .play-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: var(--gold);
+            border-radius: 50%;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+
+        .youtube-link .play-icon::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 4px;
+            border-style: solid;
+            border-width: 4px 0 4px 6px;
+            border-color: transparent transparent transparent var(--bg-primary);
+        }
+
+        .youtube-link:hover .play-icon {
+            background: var(--gold-light);
+            transform: scale(1.1);
+        }
+
+        /* ===== EXPANDABLE THEME POINTS ===== */
+        .theme-point-expandable {
+            position: relative;
+        }
+
+        .theme-point-expandable .expand-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding-left: 1.5em;
+        }
+
+        .theme-point-expandable.expanded .expand-content {
+            max-height: 200px;
+            padding-top: 0.8em;
+            padding-bottom: 0.3em;
+        }
+
+        .theme-point-expandable::after {
+            content: 'Click to expand';
+            font-size: 0.75rem;
+            color: #999;
+            margin-left: auto;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .theme-point-expandable:hover::after {
+            opacity: 1;
+        }
+
+        .expand-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .expand-icon {
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-left: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-point-expandable.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        /* ===== CHARACTER MODAL ===== */
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 300;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 2em;
+            max-width: 450px;
+            width: 80%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--gold);
+        }
+
+        .modal-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-bottom: 0.5em;
+        }
+
+        .modal-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .modal-role {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3em;
+        }
+
+        /* ===== VIDEO MODAL ===== */
+        .video-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 350;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .video-modal-content {
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .video-modal-content iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .video-modal-close:hover {
+            color: var(--gold);
+        }
+
+        /* ===== ANIMATIONS ===== */
+
+        /* Japanese paper flower blossom animation */
+        @keyframes blossom {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes blossomFade {
+            0% {
+                opacity: 0;
+                transform: translateY(10px) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .japanese-game-container {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            margin: 1.5em 0;
+            min-height: 80px;
+        }
+
+        .paper-flower {
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 50% 50%;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .paper-flower:nth-child(1) {
+            background: linear-gradient(135deg, #e8d5c4 0%, #c9a882 100%);
+            animation: blossom 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .paper-flower:nth-child(2) {
+            background: linear-gradient(135deg, #d4c4a8 0%, #a68b5b 100%);
+            animation: blossom 0.8s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .paper-flower:nth-child(3) {
+            background: linear-gradient(135deg, #c9b896 0%, #8b7355 100%);
+            animation: blossom 0.8s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        .paper-flower:nth-child(4) {
+            background: linear-gradient(135deg, #bfae8a 0%, #6b5210 100%);
+            animation: blossom 0.8s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        .paper-flower:nth-child(5) {
+            background: linear-gradient(135deg, #a6927a 0%, #5a4a3a 100%);
+            animation: blossom 0.8s ease forwards;
+            animation-delay: 1s;
+        }
+
+        /* Memory ripple effect */
+        @keyframes memoryRipple {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(139, 105, 20, 0.4);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 0 20px 5px rgba(139, 105, 20, 0.2);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(139, 105, 20, 0);
+            }
+        }
+
+        .memory-trigger {
+            display: inline-block;
+            padding: 0.3em 0.6em;
+            margin: 0.2em;
+            background: rgba(139, 105, 20, 0.1);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .memory-trigger:hover {
+            background: rgba(139, 105, 20, 0.2);
+            transform: scale(1.05);
+        }
+
+        .memory-trigger.active {
+            animation: memoryRipple 1.5s ease infinite;
+        }
+
+        /* Quote text fade-in animation */
+        .quote-animate {
+            opacity: 0;
+            animation: fadeInText 0.8s ease forwards;
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Highlight term on hover */
+        .highlight-term {
+            color: var(--gold);
+            font-weight: 600;
+            position: relative;
+            cursor: help;
+            transition: all 0.2s ease;
+        }
+
+        .highlight-term:hover {
+            color: var(--gold-light);
+            text-shadow: 0 0 10px rgba(139, 105, 20, 0.3);
+        }
+
+        /* Sensory trigger demo */
+        .sensory-demo {
+            display: flex;
+            justify-content: center;
+            gap: 1.5em;
+            margin: 1em 0;
+        }
+
+        .sensory-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.15) 0%, rgba(139, 115, 85, 0.15) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 105, 20, 0.2);
+        }
+
+        .sensory-icon:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.25) 0%, rgba(139, 115, 85, 0.25) 100%);
+            box-shadow: 0 4px 15px rgba(139, 105, 20, 0.2);
+        }
+
+        .sensory-icon.active {
+            animation: memoryRipple 1s ease;
+        }
+
+        .sensory-prompt {
+            text-align: center;
+            margin-top: 1em;
+            font-size: 1rem;
+            color: #888;
+            font-style: italic;
+            min-height: 1.5em;
+        }
+
+        /* TOC item hover enhancement */
+        .toc-item {
+            padding: 0.7em 0.9em;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .toc-item:hover {
+            background: rgba(139, 105, 20, 0.08);
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        .toc-item .toc-num {
+            color: var(--gold-dark);
+            margin-right: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="bg-animation"></div>
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="slide-indicator"><span id="currentSlide">1</span> / <span id="totalSlides">16</span></div>
+        <div class="editor-credit">editor: minjun</div>
+
+        <!-- Card detail modal -->
+        <div class="card-detail-modal" id="cardDetailModal">
+            <button class="card-detail-close" onclick="closeCardModal()">×</button>
+            <div class="card-detail-content" id="cardDetailContent"></div>
+        </div>
+
+        <div class="toc-overlay" id="tocOverlay">
+            <span class="toc-close" onclick="toggleTOC()">×</span>
+            <div class="toc-content">
+                <h2 class="toc-title">Contents</h2>
+                <div id="tocList"></div>
+            </div>
+        </div>
+
+        <!-- Character Modal -->
+        <div class="modal-overlay" id="characterModal">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeCharacterModal()">×</span>
+                <p class="modal-role">Character</p>
+                <h3 class="modal-title" id="modalTitle">Name</h3>
+                <img id="modalImage" src="" alt="" style="display: none; max-width: 100%; border-radius: 8px; margin: 1rem 0;">
+                <p class="modal-description" id="modalDescription">Description</p>
+            </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div class="video-modal-overlay" id="videoModal">
+            <div class="video-modal-content">
+                <span class="video-modal-close" onclick="closeVideoModal()">×</span>
+                <iframe id="videoIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="presentation">
+            <!-- Slide 1: Title -->
+            <div class="slide active" data-slide="1" data-title="Title">
+                <div class="slide-content">
+                    <p class="section-label">Reading Circle</p>
+                    <h1>Swann's Way</h1>
+                    <h3>The Madeleine Episode</h3>
+                    <img src="proust_effect.png" alt="Proust Effect" style="max-width: 45vw; max-height: 45vh; margin: 0.8em auto; display: block;">
+                    <div class="decorative-line"></div>
+                    <p class="subtitle">Marcel Proust</p>
+                    <p class="date">April 28, 2026</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Author -->
+            <div class="slide" data-slide="2" data-title="Author">
+                <div class="slide-content">
+                    <p class="section-label">Author</p>
+                    <h2>Marcel Proust</h2>
+                    <p>1871 – 1922</p>
+                    <img src="proust.jpg" alt="Marcel Proust" class="slide-image slide-image-small">
+                    <div class="decorative-line"></div>
+                    <p>French novelist, critic, and essayist</p>
+                    <p class="highlight" style="margin-top: 1em;">À la recherche du temps perdu</p>
+                    <p class="small-text">(In Search of Lost Time)</p>
+                    <p class="small-text" style="margin-top: 0.8em;"><a href="https://www.youtube.com/watch?v=9mLdo4uMJUU&t=13s" target="_blank" class="external-link">Watch: Introduction to Proust (YouTube)</a></p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Context -->
+            <div class="slide" data-slide="3" data-title="Context">
+                <div class="slide-content">
+                    <p class="section-label">Context</p>
+                    <h2>The Madeleine Moment</h2>
+                    <p>From the "Combray" section of <em>Swann's Way</em> (1913)</p>
+                    <div class="decorative-line"></div>
+                    <p>The famous opening episode that inspired the entire seven-volume novel</p>
+                    <p style="margin-top: 1em; color: #777;">A small cake. A cup of tea. And the floodgates of memory open.</p>
+                </div>
+            </div>
+
+            <!-- Slide 4: Reading Tasks -->
+            <div class="slide" data-slide="4" data-title="Reading Tasks">
+                <div class="slide-content">
+                    <p class="section-label">Reading Focus</p>
+                    <h2>20-Minute Focus</h2>
+                    <div class="quote-bilingual" onclick="toggleAnswer(this)">
+                        <div class="task-question">
+                            <strong>Sensory Triggers</strong>
+                            <span class="task-hint">Click to reveal answer</span>
+                        </div>
+                        <p class="task-question-text">Circle words describing physical sensation of tea and cake</p>
+                        <div class="task-answer">
+                            <p><em>Words to look for:</em> quivered, palate, delicious pleasure, invaded, isolated, precious essence, mediocre, contingent, mortal</p>
+                        </div>
+                    </div>
+                    <div class="quote-bilingual" onclick="toggleAnswer(this)">
+                        <div class="task-question">
+                            <strong>The Process of Seeking</strong>
+                            <span class="task-hint">Click to reveal answer</span>
+                        </div>
+                        <p class="task-question-text">Note the transition from "mechanically" eating to active "search"</p>
+                        <div class="task-answer">
+                            <p><em>Look for:</em> The shift from "mechanically" (passive eating) to "the truth I am seeking is not in the drink, but in me" and "It is up to my mind to find the truth" (active seeking)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Characters -->
+            <div class="slide" data-slide="11" data-title="Characters">
+                <div class="slide-content">
+                    <p class="section-label">Characters</p>
+                    <h2>Who Appears?</h2>
+                    <div class="character-list">
+                        <div class="character-item" onclick="openCharacterModal('The Narrator', 'The unnamed narrator of Proust\'s epic, representing Proust himself. He embarks on a lifelong quest to recover lost time through memory, ultimately turning his experiences into art.')">
+                            <span class="character-name">The Narrator</span>
+                            <span>Seeking lost time through memory</span>
+                        </div>
+                        <div class="character-item" onclick="openCharacterModal('Aunt Léonie', 'The narrator\'s aunt in Combray who suffered from mysterious ailments and lived in perpetual mourning for her late husband. She gave the young narrator the madeleine dipped in her tea, unknowingly triggering the famous memory.', 'tea.avif')">
+                            <span class="character-name">Aunt Léonie</span>
+                            <span>The aunt in Combray who gave him the madeleine</span>
+                        </div>
+                        <div class="character-item" onclick="openCharacterModal('Combray', 'The fictional town based on Proust\'s childhood home in Illiers. Represents the lost world of his youth—the church, the houses, the gardens, the people—all preserved in involuntary memory until the tea and cake unlock them.', 'Illiers-Combray.jpg')">
+                            <span class="character-name">Combray</span>
+                            <span>The childhood town, now lost</span>
+                        </div>
+                    </div>
+                    <p class="small-text" style="margin-top: 1em; font-style: italic;">Click any character to learn more</p>
+                </div>
+            </div>
+
+            <!-- Slide 6: Section I - The Sensation -->
+            <div class="slide" data-slide="6" data-title="The Sensation">
+                <div class="slide-content">
+                    <p class="section-label">Part I</p>
+                    <h2>The Sensation</h2>
+                    <p>Winter. A cold day. A cup of tea.</p>
+                    <div class="decorative-line"></div>
+                    <div class="quote-bilingual" onclick="toggleFrench(this)">
+                        <p class="quote quote-english">
+                            "I quivered, attentive to the extraordinary thing that was happening in me. A delicious pleasure had invaded me, isolated me, without my having any notion as to its cause."
+                        </p>
+                        <div class="quote-french">
+                            Je tressaillis, attentif à ce qui se passait d'extraordinaire en moi. Un plaisir délicieux m'avait envahi, isolé, sans la notion de sa cause.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7
+             : Section II - The Search -->
+            <div class="slide" data-slide="7" data-title="The Search">
+                <div class="slide-content">
+                    <p class="section-label">Part II</p>
+                    <h2>The Search for Truth</h2>
+                    <p>The drink has awakened the truth, but cannot reveal it.</p>
+                    <div class="decorative-line"></div>
+                    <div class="quote-bilingual" onclick="toggleFrench(this)">
+                        <p class="quote quote-english">
+                            "Seek? Not only that: create. It is face to face with something that does not yet exist and that only it can accomplish, then bring into its light."
+                        </p>
+                        <div class="quote-french">
+                            Chercher? Pas seulement: créer. Il est face à quelque chose qui n'existe pas encore et que seul il peut réaliser, puis faire entrer dans sa lumière.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Section III - The Resurfacing -->
+            <div class="slide" data-slide="8" data-title="The Resurfacing">
+                <div class="slide-content">
+                    <p class="section-label">Part III</p>
+                    <h2>The Resurfacing</h2>
+                    <p>The struggle to bring the memory to the surface.</p>
+                    <div class="decorative-line"></div>
+                    <div class="quote-bilingual" onclick="toggleFrench(this)">
+                        <p class="quote quote-english">
+                            "I feel something quiver in me, shift, try to rise, something that seems to have been unanchored at a great depth... I hear the murmur of the distances traversed."
+                        </p>
+                        <div class="quote-french">
+                            Je sens tressaillir en moi quelque chose qui se déplace, voudrait s'élever, quelque chose qu'on aurait ancré, à une grande profondeur... J'éprouve la résistance et j'entends la rumeur des distances traversées.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Section IV - The Revelation -->
+            <div class="slide" data-slide="9" data-title="The Revelation">
+                <div class="slide-content">
+                    <p class="section-label">Part IV</p>
+                    <h2>The Revelation</h2>
+                    <p>And suddenly—the memory appears.</p>
+                    <div class="decorative-line"></div>
+                    <div class="quote-bilingual" onclick="toggleFrench(this)">
+                        <p class="quote quote-english">
+                            "That taste was the taste of the little piece of madeleine which on Sunday mornings at Combray... my Aunt Léonie would give me after dipping it in her infusion of tea or lime-blossom."
+                        </p>
+                        <div class="quote-french">
+                            Ce goût c'était celui du petit morceau de madeleine que le dimanche matin à Combray... ma tante Léonie m'offrait après l'avoir trempé dans son infusion de thé ou de tilleul.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: The Japanese Game -->
+            <div class="slide" data-slide="10" data-title="Japanese Game">
+                <div class="slide-content">
+                    <p class="section-label">The Revelation</p>
+                    <h2>Like the Japanese Game</h2>
+                    <div class="quote-bilingual" onclick="toggleFrench(this)">
+                        <p class="quote quote-english">
+                            "As in that game... little pieces of paper until then indistinct, which, the moment they are immersed in it, stretch and shape themselves, colour and differentiate, become flowers, houses, human figures..."
+                        </p>
+                        <div class="quote-french">
+                            Et comme dans ce jeu où les Japonais s'amusent à tremper dans un bol de porcelaine rempli d'eau, de petits morceaux de papier jusqu'alors indistincts qui, à peine y sont-ils plongés, s'étirent, se contournent, se colorent, se différencient, deviennent des fleurs, des maisons, des personnages consistants et reconnaissables.
+                        </div>
+                    </div>
+                    <p>All of Combray emerges from the cup of tea.</p>
+                    <p class="small-text"><a href="https://wildabouthere.com/blossoming-paper-flowers/" target="_blank" style="color: var(--gold);" class="external-link">Learn more about this Japanese game</a></p>
+                </div>
+            </div>
+
+            <!-- Slide 10: Involuntary Memory Details -->
+            <div class="slide" data-slide="11" data-title="Involuntary Memory">
+                <div class="slide-content">
+                    <p class="section-label">Core Theme</p>
+                    <h2>Involuntary Memory</h2>
+                    <div class="decorative-line"></div>
+                    <div class="memory-cards">
+                        <div class="memory-card" onclick="toggleCard(this)">
+                            <div class="card-icon">🧠</div>
+                            <h3>Sensory Triggers</h3>
+                            <p class="card-subtitle">Involuntary Memory</p>
+                            <p class="card-description">Triggered by sensory cues like taste and smell, emerging without conscious effort.</p>
+                            <div class="card-detail">
+                                <p>Unlike voluntary memory (conscious recall), involuntary memory surfaces unbidden—the taste of a cake, the smell of a room, the sound of a voice. Proust believed these moments reveal deeper truths about our past. When we experience something by chance, without looking for it, the memory arrives whole and vivid, carrying the full emotional weight of the original moment. This is the essence of the madeleine experience: a sensation that unlocks an entire lost world.</p>
+                            </div>
+                            <span class="card-toggle">Click to learn more</span>
+                        </div>
+                        <div class="memory-card" onclick="toggleCard(this)">
+                            <div class="card-icon">⚡</div>
+                            <h3>Neuroscience</h3>
+                            <p class="card-subtitle">The Proust Effect</p>
+                            <p class="card-description">Sensory memories connect directly to emotional centers, making them vivid and intense.</p>
+                            <div class="card-detail">
+                                <p>Modern neuroscience confirms Proust's intuition: smell and taste pathways connect to the limbic system (emotional brain) without passing through cortical filtering, making these memories uniquely powerful and emotionally charged. The olfactory bulb has direct connections to the amygdala and hippocampus, which handle emotion and memory formation. This explains why a scent can instantly transport us back decades, triggering not just a memory but the full sensory and emotional experience of a moment we thought was forgotten.</p>
+                            </div>
+                            <span class="card-toggle">Click to learn more</span>
+                        </div>
+                        <div class="memory-card" onclick="toggleCard(this)">
+                            <div class="card-icon">💎</div>
+                            <h3>Emotional Truth</h3>
+                            <p class="card-subtitle">Memory Quality</p>
+                            <p class="card-description">Brings "emotional truth" while voluntary memory is "dry and partial."</p>
+                            <div class="card-detail">
+                                <p>Proust contrasts "mémoire volontaire" (conscious effort to recall) with the spontaneous "mémoire involontaire." Only the latter captures the full sensory and emotional reality of the past moment—alive and whole. When we try to deliberately remember, we analyze and reconstruct, losing the essence. But when memory arrives unbidden, it comes complete with all its colors, scents, and feelings. Proust suggests that true understanding of our lives comes not from intellectual effort but from these moments of grace when the past returns to us in its full richness.</p>
+                            </div>
+                            <span class="card-toggle">Click to learn more</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12: Discussion 1 -->
+            <div class="slide" data-slide="13" data-title="Discussion 1">
+                <div class="slide-content">
+                    <p class="section-label">Discussion</p>
+                    <h2>Question 1</h2>
+                    <div class="discussion-q" onclick="toggleBubbles(this)">
+                        What sensory trigger brings back your strongest childhood memory?
+                        <div class="discussion-bubbles">
+                            <span class="bubble" style="--tx: -1400px; --ty: -50px;"> Grandma's recipe</span>
+                            <span class="bubble" style="--tx: 1400px; --ty: -60px;">Texture of bamboo mat</span>
+                            <span class="bubble" style="--tx: -1200px; --ty: 80px;">Rain on blue slate</span>
+                            <span class="bubble" style="--tx: 1200px; --ty: 70px;">Specific regional dialects</span>
+                            <span class="bubble" style="--tx: -900px; --ty: -150px;">Popcorn</span>
+                            <span class="bubble" style="--tx: 900px; --ty: -160px;">Picture books</span>
+                            <span class="bubble" style="--tx: -600px; --ty: 180px;">Mosquito coils in the evening</span>
+                            <span class="bubble" style="--tx: 600px; --ty: 170px;">White Rabbit candy</span>
+                            <span class="bubble" style="--tx: -1300px; --ty: 120px;">Smell of the air conditioner</span>
+                            <span class="bubble" style="--tx: 1300px; --ty: 110px;">The texture of correction tape</span>
+                            <span class="bubble" style="--tx: -1000px; --ty: -80px;">Summer cicadas</span>
+                            <span class="bubble" style="--tx: 1000px; --ty: -90px;">Alley hawkers</span>
+                            <span class="bubble" style="--tx: -700px; --ty: 250px;">The smell of rain hitting dry pavement</span>
+                            <span class="bubble" style="--tx: 700px; --ty: 240px;">New Year firecrackers</span>
+                            <span class="bubble" style="--tx: -1100px; --ty: -200px;">Osmanthus cake</span>
+                            <span class="bubble" style="--tx: 1100px; --ty: -210px;">Metal pencil box</span>
+                            <span class="bubble" style="--tx: -500px; --ty: -280px;">Glass marbles</span>
+                            <span class="bubble" style="--tx: 500px; --ty: -290px;">Some types of drinks</span>
+                        </div>
+                    </div> 
+                    <p class="small-text">Think: smell, taste, sound, texture...</p>
+                    <div class="sensory-demo">
+                        <div class="sensory-icon" onclick="triggerMemory(this, 'The scent of rain on dry earth...')" title="Smell">👃</div>
+                        <div class="sensory-icon" onclick="triggerMemory(this, 'The taste of something familiar...')" title="Taste">👅</div>
+                        <div class="sensory-icon" onclick="triggerMemory(this, 'An old song plays...')" title="Sound">🎵</div>
+                        <div class="sensory-icon" onclick="triggerMemory(this, 'A fabric texture...')" title="Touch">✋</div>
+                        <div class="sensory-icon" onclick="triggerMemory(this, 'A familiar sight...')" title="Sight">👁️</div>
+                    </div>
+                    <p class="sensory-prompt" id="sensoryPrompt">Click an icon above</p>
+                </div>
+            </div>
+
+            <!-- Slide 13: Discussion 2 -->
+            <div class="slide" data-slide="14" data-title="Discussion 2">
+                <div class="slide-content">
+                    <p class="section-label">Discussion</p>
+                    <h2>Question 2</h2>
+                    <div class="discussion-q" onclick="toggleBubbles(this)">
+                        Is memory reliable? How does Proust challenge our understanding of memory?
+                        <div class="discussion-bubbles">
+                            <span class="bubble" style="--tx: -1380px; --ty: -40px;">Faded photos</span>
+                            <span class="bubble" style="--tx: 1390px; --ty: -50px;">Rose-tinted memory</span>
+                            <span class="bubble" style="--tx: -1180px; --ty: 90px;">Face forgotten</span>
+                            <span class="bubble" style="--tx: 1190px; --ty: 80px;">Story changed</span>
+                            <span class="bubble" style="--tx: -880px; --ty: -140px;">Blank spots</span>
+                            <span class="bubble" style="--tx: 890px; --ty: -150px;">Elaborated facts</span>
+                            <span class="bubble" style="--tx: -580px; --ty: 200px;">Déja vu</span>
+                            <span class="bubble" style="--tx: 590px; --ty: 190px;">The seeker</span>
+                            <span class="bubble" style="--tx: -1280px; --ty: 130px;">Obscure country</span>
+                            <span class="bubble" style="--tx: 1290px; --ty: 120px;">Filled in gaps</span>
+                            <span class="bubble" style="--tx: -980px; --ty: -70px;">Fragmented</span>
+                            <span class="bubble" style="--tx: 990px; --ty: -80px;">Retelling changed</span>
+                            <span class="bubble" style="--tx: -680px; --ty: 270px;">Wrong order</span>
+                            <span class="bubble" style="--tx: 690px; --ty: 260px;">Made up</span>
+                            <span class="bubble" style="--tx: -1080px; --ty: -210px;">Selective memory</span>
+                            <span class="bubble" style="--tx: 1090px; --ty: -220px;">Best version</span>
+                            <span class="bubble" style="--tx: -480px; --ty: -300px;">Time shift</span>
+                            <span class="bubble" style="--tx: 490px; --ty: -310px;">Emotional filter</span>
+                        </div>
+                    </div>
+                    <p class="small-text">Consider: The mind as "seeker" and "obscure country"</p>
+                </div>
+            </div>
+
+            <!-- Slide 14: Discussion 3 -->
+            <div class="slide" data-slide="15" data-title="Discussion 3">
+                <div class="slide-content">
+                    <p class="section-label">Discussion</p>
+                    <h2>Question 3</h2>
+                    <div class="discussion-q" onclick="toggleBubbles(this)">
+                        What does "the search for lost time" mean to you?
+                        <div class="discussion-bubbles">
+                            <span class="bubble" style="--tx: -1390px; --ty: -45px;">Nostalgia</span>
+                            <span class="bubble" style="--tx: 1400px; --ty: -55px;">Writing memoir</span>
+                            <span class="bubble" style="--tx: -1190px; --ty: 85px;">Too late</span>
+                            <span class="bubble" style="--tx: 1200px; --ty: 75px;">Treasured</span>
+                            <span class="bubble" style="--tx: -890px; --ty: -145px;">Vanished</span>
+                            <span class="bubble" style="--tx: 900px; --ty: -155px;">Unfinished</span>
+                            <span class="bubble" style="--tx: -590px; --ty: 195px;">Fading</span>
+                            <span class="bubble" style="--tx: 600px; --ty: 185px;">Regret</span>
+                            <span class="bubble" style="--tx: -1290px; --ty: 125px;">Closure</span>
+                            <span class="bubble" style="--tx: 1300px; --ty: 115px;">Looking back</span>
+                            <span class="bubble" style="--tx: -990px; --ty: -75px;">Homesickness</span>
+                            <span class="bubble" style="--tx: 1000px; --ty: -85px;">Moving on</span>
+                            <span class="bubble" style="--tx: -690px; --ty: 265px;">Treasure hunt</span>
+                            <span class="bubble" style="--tx: 700px; --ty: 255px;">Old friends</span>
+                            <span class="bubble" style="--tx: -1090px; --ty: -215px;">Gone forever</span>
+                            <span class="bubble" style="--tx: 1100px; --ty: -225px;">Never again</span>
+                            <span class="bubble" style="--tx: -490px; --ty: -305px;">Back then</span>
+                            <span class="bubble" style="--tx: 500px; --ty: -315px;">Yesteryear</span>
+                        </div>
+                    </div>
+                    <p class="small-text">Is it about recovery? Acceptance? Creation?</p>
+                </div>
+            </div>
+
+            <!-- Slide 15: Closing -->
+            <div class="slide" data-slide="16" data-title="Closing">
+                <div class="slide-content">
+                    <p class="section-label">Closing</p>
+                    <p class="closing-quote">"The real voyage of discovery consists not in seeking new landscapes, but in having new eyes."</p>
+                    <div class="decorative-line"></div>
+                    <h2>Thank You</h2>
+                    <p class="subtitle">Questions?</p>
+                    <p class="small-text">Appendix: The Proust Questionnaire (in your handout) — reflect on yourself through Proust's timeless questions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="keyboard-hint">
+            <kbd>←</kbd> <kbd>→</kbd> Navigate &nbsp;|&nbsp; <kbd>T</kbd> Contents &nbsp;|&nbsp; <kbd>F</kbd> Fullscreen
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlide = 1;
+
+        const progressBar = document.getElementById('progressBar');
+        const currentSlideEl = document.getElementById('currentSlide');
+        const currentSlideNumEl = document.getElementById('currentSlideNum');
+        const totalSlidesEl = document.getElementById('totalSlides');
+        const totalSlidesNumEl = document.getElementById('totalSlidesNum');
+        const tocOverlay = document.getElementById('tocOverlay');
+        const tocList = document.getElementById('tocList');
+        const characterModal = document.getElementById('characterModal');
+        const videoModal = document.getElementById('videoModal');
+        const videoIframe = document.getElementById('videoIframe');
+
+        if (totalSlidesEl) totalSlidesEl.textContent = totalSlides;
+
+        // Build Table of Contents
+        slides.forEach((slide, index) => {
+            const title = slide.dataset.title || `Slide ${index + 1}`;
+            const tocItem = document.createElement('div');
+            tocItem.className = 'toc-item';
+            tocItem.innerHTML = `<span class="toc-num">${index + 1}.</span> ${title}`;
+            tocItem.onclick = () => {
+                updateSlide(index + 1);
+                toggleTOC();
+            };
+            tocList.appendChild(tocItem);
+        });
+
+        function updateSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n - 1].classList.add('active');
+            currentSlide = n;
+            if (currentSlideEl) currentSlideEl.textContent = currentSlide;
+            if (currentSlideNumEl) currentSlideNumEl.textContent = currentSlide;
+            progressBar.style.width = ((currentSlide / totalSlides) * 100) + '%';
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                updateSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                updateSlide(currentSlide - 1);
+            }
+        }
+
+        function toggleTOC() {
+            tocOverlay.classList.toggle('active');
+        }
+
+        function toggleFullscreen() {
+            const container = document.querySelector('.presentation-container');
+            if (!document.fullscreenElement) {
+                container.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Character modal functions
+        function openCharacterModal(name, description, image) {
+            document.getElementById('modalTitle').textContent = name;
+            document.getElementById('modalDescription').textContent = description;
+            const modalImage = document.getElementById('modalImage');
+            if (image) {
+                modalImage.src = image;
+                modalImage.style.display = 'block';
+            } else {
+                modalImage.style.display = 'none';
+            }
+            characterModal.classList.add('active');
+        }
+
+        function closeCharacterModal() {
+            characterModal.classList.remove('active');
+        }
+
+        // Card detail modal functions
+        function openCardModal(card) {
+            const icon = card.querySelector('.card-icon').textContent;
+            const title = card.querySelector('h3').textContent;
+            const description = card.querySelector('.card-description').textContent;
+            const detail = card.querySelector('.card-detail p').textContent;
+
+            const content = document.getElementById('cardDetailContent');
+            content.innerHTML = `
+                <span class="card-icon" style="font-size: 4rem;">${icon}</span>
+                <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">${title}</h3>
+                <p style="color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">${description}</p>
+                <p class="card-detail-text" style="font-size: 1.3rem; line-height: 1.9;">${detail}</p>
+                <p style="margin-top: 2rem; font-size: 1rem; color: #888; font-style: italic;">Click anywhere to close</p>
+            `;
+
+            const modal = document.getElementById('cardDetailModal');
+            modal.classList.add('active');
+        }
+
+        function closeCardModal() {
+            const modal = document.getElementById('cardDetailModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal on background click
+        document.getElementById('cardDetailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCardModal();
+            }
+        });
+
+        // Video modal functions
+        function openVideoModal() {
+            // Use youtube-nocookie and hide controls for cleaner experience
+            videoIframe.src = 'https://www.youtube-nocookie.com/embed/9mLdo4uMJUU?autoplay=1&start=13&rel=0&modestbranding=1&controls=0&showinfo=0';
+            videoModal.classList.add('active');
+        }
+
+        function closeVideoModal() {
+            videoIframe.src = '';
+            videoModal.classList.remove('active');
+        }
+
+        // Expandable theme points
+        function toggleExpand(element) {
+            element.classList.toggle('expanded');
+        }
+
+        // Discussion bubbles toggle
+        function toggleBubbles(element) {
+            element.classList.toggle('active');
+        }
+
+        // Memory card toggle
+        function toggleCard(card) {
+            openCardModal(card);
+        }
+
+        // Task answer toggle for Reading Tasks
+        function toggleAnswer(element) {
+            const answer = element.querySelector('.task-answer');
+            if (answer) {
+                answer.classList.toggle('revealed');
+            }
+        }
+
+        // Bilingual quote toggle
+        function toggleFrench(container) {
+            const frenchText = container.querySelector('.quote-french');
+            if (frenchText) {
+                frenchText.classList.toggle('revealed');
+            }
+        }
+
+        // Sensory trigger demo
+        function triggerMemory(element, message) {
+            // Remove active class from all icons
+            document.querySelectorAll('.sensory-icon').forEach(icon => icon.classList.remove('active'));
+            // Add to clicked icon
+            element.classList.add('active');
+            // Update prompt
+            document.getElementById('sensoryPrompt').textContent = message;
+        }
+
+        // Close modals on escape key
+        function handleEscape(e) {
+            if (e.key === 'Escape') {
+                if (characterModal.classList.contains('active')) {
+                    closeCharacterModal();
+                } else if (videoModal.classList.contains('active')) {
+                    closeVideoModal();
+                } else if (tocOverlay.classList.contains('active')) {
+                    toggleTOC();
+                }
+            }
+        }
+
+        // Close modal on overlay click
+        characterModal.addEventListener('click', (e) => {
+            if (e.target === characterModal) {
+                closeCharacterModal();
+            }
+        });
+
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+
+        // Trigger blossom animation when slide 9 becomes active
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.target.classList.contains('active') && mutation.target.dataset.slide === '9') {
+                    // Re-trigger animations by resetting the flowers
+                    const flowers = mutation.target.querySelectorAll('.paper-flower');
+                    flowers.forEach((flower, i) => {
+                        flower.style.animation = 'none';
+                        flower.offsetHeight; // Trigger reflow
+                        flower.style.animation = null;
+                    });
+                }
+            });
+        });
+
+        slides.forEach(slide => {
+            observer.observe(slide, { attributes: true, attributeFilter: ['class'] });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            handleEscape(e);
+
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 't' || e.key === 'T') {
+                toggleTOC();
+            } else if (e.key === 'f' || e.key === 'F') {
+                toggleFullscreen();
+            }
+        });
+
+        // Touch support
+        let touchStartX = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+        });
+
+        // Initialize
+        updateSlide(1);
+    </script>
+</body>
+</html>

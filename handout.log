@@ -1,0 +1,782 @@
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.3.19)  27 APR 2026 14:32
+ restricted system commands enabled.
+**handout.tex
+(./handout.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
+collection.
+luaotfload | conf : Root cache directory is "/Users/philia17/Library/texlive/202
+6/texmf-var/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
+olved path "/usr/local/texlive/2026/texmf-dist/tex/luatex/luaotfload/fontloader-
+2023-12-28.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.134
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "/Users/philia17/Library/texlive/202
+6/texmf-var/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'. (/usr/local/texlive/202
+6/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from /Users/philia17/Library/texliv
+e/2026/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz)
+\c@part=\count273
+\c@section=\count274
+\c@subsection=\count275
+\c@subsubsection=\count276
+\c@paragraph=\count277
+\c@subparagraph=\count278
+\c@figure=\count279
+\c@table=\count280
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen147
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count281
+\Gm@cntv=\count282
+\c@Gm@tempcnt=\count283
+\Gm@bindingoffset=\dimen148
+\Gm@wd@mp=\dimen149
+\Gm@odd@mp=\dimen150
+\Gm@even@mp=\dimen151
+\Gm@layoutwidth=\dimen152
+\Gm@layoutheight=\dimen153
+\Gm@layouthoffset=\dimen154
+\Gm@layoutvoffset=\dimen155
+\Gm@dimlist=\toks18
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2026-01-19 L3 programming layer (loader) 
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2025-10-09 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count284
+Inserting `l3color' in `luaotfload.parse_color'.))
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
+Lua module: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX (/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+Package: fontspec-luatex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaT
+eX
+\l__fontspec_script_int=\count285
+\l__fontspec_language_int=\count286
+\l__fontspec_strnum_int=\count287
+\l__fontspec_tmp_int=\count288
+\l__fontspec_tmpa_int=\count289
+\l__fontspec_tmpb_int=\count290
+\l__fontspec_tmpc_int=\count291
+\l__fontspec_em_int=\count292
+\l__fontspec_emdef_int=\count293
+\l__fontspec_strong_int=\count294
+\l__fontspec_strongdef_int=\count295
+\l__fontspec_tmpa_dim=\dimen156
+\l__fontspec_tmpb_dim=\dimen157
+\l__fontspec_tmpc_dim=\dimen158
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2026/02/14 v26.3 The multilingual framework for LuaLaTeX, pdfLaT
+eX and XeLaTeX
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/babel/luababel.def
+\bbl@readstream=\read2
+\l@dumylang=\language2
+Package babel Info: Non-standard hyphenation setup on input line 118.
+\l@nohyphenation=\language3
+\l@german-x-2024-02-28=\language4
+\l@ngerman-x-2024-02-28=\language5
+\l@afrikaans=\language6
+\l@albanian=\language7
+\l@ancientgreek=\language8
+\l@ibycus=\language9
+\l@arabic=\language10
+\l@armenian=\language11
+\l@basque=\language12
+\l@belarusian=\language13
+\l@bulgarian=\language14
+\l@catalan=\language15
+\l@pinyin=\language16
+\l@churchslavonic=\language17
+\l@coptic=\language18
+\l@croatian=\language19
+\l@czech=\language20
+\l@danish=\language21
+\l@dutch=\language22
+\l@ukenglish=\language23
+\l@usenglishmax=\language24
+\l@esperanto=\language25
+\l@estonian=\language26
+\l@ethiopic=\language27
+\l@farsi=\language28
+\l@finnish=\language29
+\l@schoolfinnish=\language30
+\l@french=\language31
+\l@friulan=\language32
+\l@galician=\language33
+\l@georgian=\language34
+\l@german=\language35
+\l@ngerman=\language36
+\l@swissgerman=\language37
+\l@greek=\language38
+\l@monogreek=\language39
+\l@hebrew=\language40
+\l@hungarian=\language41
+\l@icelandic=\language42
+\l@assamese=\language43
+\l@bengali=\language44
+\l@gujarati=\language45
+\l@hindi=\language46
+\l@kannada=\language47
+\l@malayalam=\language48
+\l@marathi=\language49
+\l@oriya=\language50
+\l@pali=\language51
+\l@panjabi=\language52
+\l@tamil=\language53
+\l@telugu=\language54
+\l@indonesian=\language55
+\l@interlingua=\language56
+\l@irish=\language57
+\l@italian=\language58
+\l@kazakh=\language59
+\l@kurmanji=\language60
+\l@classiclatin=\language61
+\l@latin=\language62
+\l@liturgicallatin=\language63
+\l@latvian=\language64
+\l@lithuanian=\language65
+\l@macedonian=\language66
+\l@mongolian=\language67
+\l@mongolianlmc=\language68
+\l@bokmal=\language69
+\l@nynorsk=\language70
+\l@occitan=\language71
+\l@piedmontese=\language72
+\l@polish=\language73
+\l@portuguese=\language74
+\l@romanian=\language75
+\l@romansh=\language76
+\l@russian=\language77
+\l@sanskrit=\language78
+\l@serbian=\language79
+\l@serbianc=\language80
+\l@slovak=\language81
+\l@slovenian=\language82
+\l@spanish=\language83
+\l@swedish=\language84
+\l@thai=\language85
+\l@turkish=\language86
+\l@turkmen=\language87
+\l@ukrainian=\language88
+\l@uppersorbian=\language89
+\l@vietnamese=\language90
+\l@welsh=\language91
+\babelcatcodetablenum=\catcodetable14
+\bbl@pattcodes=\catcodetable15
+)
+\babel@savecnt=\count296
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
+ne 2078.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
+ne 2080.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
+e 2082.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
+e 2083.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
+on input line 2084.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
+on input line 2086.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
+on input line 2111.
+\U@D=\dimen159
+\l@unhyphenated=\language92
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/babel/luababel.def
+\bbl@attr@locale=\attribute4
+
+(/usr/local/texlive/2026/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX 
+
+(/usr/local/texlive/2026/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
+Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
+\@catcodetablestackcnt=\count297
+)
+\CatcodeTableOther=\catcodetable16
+\CatcodeTableExpl=\catcodetable17
+)
+Removing  `luaotfload.node_processor' from `pre_linebreak_filter'.
+Inserting `Babel.pre_otfload_v' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Removing  `luaotfload.node_processor' from `hpack_filter'.
+Removing  `luaotfload.harf.finalize_hlist' from `hpack_filter'.
+Inserting `Babel.pre_otfload_h' in `hpack_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+\bbl@attr@dir=\attribute5
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/babel/locale/en/babel-english.t
+ex)
+Package babel Info: Importing data for english
+(babel)             from babel-en.ini. Reported on input line 4330.
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
+\c@tracingmulticols=\count298
+\mult@box=\box53
+\multicol@leftmargin=\dimen160
+\c@unbalance=\count299
+\c@collectmore=\count300
+\doublecol@number=\count301
+\multicoltolerance=\count302
+\multicolpretolerance=\count303
+\full@width=\dimen161
+\page@free=\dimen162
+\premulticols=\dimen163
+\postmulticols=\dimen164
+\multicolsep=\skip51
+\multicolbaselineskip=\skip52
+\partial@page=\box54
+\last@line=\box55
+\mc@boxedresult=\box56
+\maxbalancingoverflow=\dimen165
+\mult@rightbox=\box57
+\mult@grightbox=\box58
+\mult@firstbox=\box59
+\mult@gfirstbox=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\c@minrows=\count304
+\c@columnbadness=\count305
+\c@finalcolumnbadness=\count306
+\last@try=\dimen166
+\multicolovershoot=\dimen167
+\multicolundershoot=\dimen168
+\mult@nat@firstbox=\box97
+\colbreak@box=\box98
+\mc@col@check@num=\count307
+\g__mc_curr_col_int=\count308
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: luatex.def on input line 274.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-def/luatex.def
+File: luatex.def 2025/09/29 v1.2f Graphics/color driver for luatex
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip53
+\enit@outerparindent=\dimen169
+\enit@toks=\toks19
+\enit@inbox=\box99
+\enit@count@id=\count309
+\enitdp@description=\count310
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2025/07/23 v0.6g Insert pages of external PDF documents (AM)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count311
+\calc@Bcount=\count312
+\calc@Adimen=\dimen170
+\calc@Bdimen=\dimen171
+\calc@Askip=\skip54
+\calc@Bskip=\skip55
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count313
+\calc@Cskip=\skip56
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2025/12/10 v3.0d eso-pic (RN)
+\ESO@tempdima=\dimen172
+\ESO@tempdimb=\dimen173
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count314
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: luatex.def on input line 106.
+)
+\Gin@req@height=\dimen174
+\Gin@req@width=\dimen175
+)
+\AM@pagewidth=\dimen176
+\AM@pageheight=\dimen177
+\AM@fboxrule=\dimen178
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pdfpages/ppluatex.def
+File: ppluatex.def 2025/07/23 v0.6g Pdfpages driver for LuaTeX (AM)
+)
+\pdfpages@includegraphics@status=\count315
+\AM@pagebox=\box100
+\AM@global@opts=\toks20
+\AM@pagecnt=\count316
+\AM@toc@title=\toks21
+\AM@lof@heading=\toks22
+\c@AM@survey=\count317
+\AM@templatesizebox=\box101
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/babel/locale/en/babel-english.t
+ex)
+Package babel Info: Importing data for english
+(babel)             from babel-en.ini. Reported on input line 12.
+Inserting `Babel.hyphenate' in `hyphenate'.
+luaotfload | cache : Lookup cache loaded from /Users/philia17/Library/texlive/20
+26/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
+
+Package fontspec Info: 
+(fontspec)             Language 'English' not explicitly supported within font
+(fontspec)             'Noto Serif' with script 'Latin'. Check the typeset
+(fontspec)             output, and if it is okay then ignore this warning.
+(fontspec)             Otherwise a different font should be chosen.
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'NotoSerif(0)' created for font 'Noto
+(fontspec)             Serif' with options
+(fontspec)             [Ligatures=TeX,Script=Latin,Language=English,RawFeature=
+{family=rm}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"name:Noto
+(fontspec)             Serif:mode=node;script=latn;language=ENG;+tlig;family=rm
+;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"name:Noto
+(fontspec)             Serif:mode=node;script=latn;language=ENG;+tlig;family=rm
+;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"name:Noto
+(fontspec)             Serif/B:mode=node;script=latn;language=ENG;+tlig;family=
+rm;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"name:Noto
+(fontspec)             Serif/B:mode=node;script=latn;language=ENG;+tlig;family=
+rm;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"name:Noto
+(fontspec)             Serif/I:mode=node;script=latn;language=ENG;+tlig;family=
+rm;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"name:Noto
+(fontspec)             Serif/I:mode=node;script=latn;language=ENG;+tlig;family=
+rm;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"name:Noto
+(fontspec)             Serif/BI:mode=node;script=latn;language=ENG;+tlig;family
+=rm;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"name:Noto
+(fontspec)             Serif/BI:mode=node;script=latn;language=ENG;+tlig;family
+=rm;+smcp;"
+
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2026/02/16 line numbers on paragraphs v5.7
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+\linenopenalty=\count318
+\output=\toks23
+\linenoprevgraf=\count319
+\linenumbersep=\dimen179
+\linenumberwidth=\dimen180
+\c@linenumber=\count320
+\c@pagewiselinenumber=\count321
+\c@LN@truepage=\count322
+\c@internallinenumber=\count323
+\c@internallinenumbers=\count324
+\quotelinenumbersep=\dimen181
+\bframerule=\dimen182
+\bframesep=\dimen183
+\bframebox=\box102
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip57
+\f@nch@offset@elh=\skip58
+\f@nch@offset@erh=\skip59
+\f@nch@offset@olh=\skip60
+\f@nch@offset@orh=\skip61
+\f@nch@offset@elf=\skip62
+\f@nch@offset@erf=\skip63
+\f@nch@offset@olf=\skip64
+\f@nch@offset@orf=\skip65
+\f@nch@height=\skip66
+\f@nch@footalignment=\skip67
+\f@nch@widthL=\skip68
+\f@nch@widthC=\skip69
+\f@nch@widthR=\skip70
+\@temptokenb=\toks24
+)
+(./handout.aux
+
+Package babel Info: The following font families will use the default
+(babel)             settings for all or some languages:
+(babel)             * \sffamily = lmss
+(babel)               [lmsans10-regular]:+tlig; at 10.95pt
+(babel)             * \ttfamily = lmtt
+(babel)               [lmmono10-regular]: at 10.95pt
+(babel)             There is nothing intrinsically wrong with it, but
+(babel)             'babel' will no set Script and Language, which could
+(babel)             be relevant in some languages. If your document uses
+(babel)             these families, consider redefining them with \babelfont.
+(babel)             Reported on input line 3.
+
+)
+\openout1 = handout.aux
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+*geometry* verbose mode - [ preamble ] result:
+* driver: luatex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(56.9055pt, 717.00946pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=717.00946pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-52.36449pt
+* \headheight=14.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=113.81102pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Package fontspec Info: 
+(fontspec)             Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 42.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 42.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 42.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 42.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 42.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 42.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 42.
+LaTeX Font Info:    Redeclaring math accent \check on input line 42.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 42.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 42.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 42.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 42.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 42.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 42.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/NotoSerif(0)/m/n on input line 42.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 42.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/NotoSerif(0)/m/n on input line 42.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/NotoSerif(0)/m/n --> TU/NotoSerif(0)/m/n on input li
+ne 42.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/NotoSerif(0)/m/it on input line 42.
+
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/NotoSerif(0)/b/n on input line 42.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 42.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 42.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/NotoSerif(0)/m/n --> TU/NotoSerif(0)/b/n on input li
+ne 42.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/NotoSerif(0)/b/it on input line 42
+.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 42.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 42.
+Removing  `Babel.pre_otfload_h' from `hpack_filter'.
+Removing  `luaotfload.node_processor' from `hpack_filter'.
+Removing  `luaotfload.harf.finalize_hlist' from `hpack_filter'.
+Inserting `Babel.math_box_dir' in `hpack_filter'.
+Inserting `Babel.pre_otfload_h' in `hpack_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `Babel.unset_atdir' in `pre_linebreak_filter'.
+Inserting `Babel.unset_atdir' in `hpack_filter'. (/usr/local/texlive/2026/texmf
+-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count325
+\scratchdimen=\dimen184
+\scratchbox=\box103
+\nofMPsegments=\count326
+\nofMParguments=\count327
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count328
+\MPscratchDim=\dimen185
+\MPnumerator=\count329
+\makeMPintoPDFobject=\count330
+\everyMPtoPDFconversion=\toks26
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2025-06-23 v0.14 Display of landscape pages in PDF
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.st
+y
+Package: pdflscape-nometadata 2025-06-23 v0.14 Display of landscape pages in PD
+F (HO)
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)) [1{/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+Overfull \hbox (10.72678pt too wide) in paragraph at lines 100--101
+\TU/NotoSerif(0)/m/n/10.95 And sud-denly the mem-ory ap-peared. That taste was 
+the taste of the lit-tle piece of madeleine
+ []
+
+[2] [3]
+
+Package geometry Warning: `landscape': not available in `\newgeometry'; skipped
+.
+
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: luatex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(34.14322pt, 529.22144pt, 34.14322pt)
+* v-part:(T,H,B)=(34.14322pt, 776.7604pt, 34.14322pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=529.22144pt
+* \textheight=776.7604pt
+* \oddsidemargin=-38.12677pt
+* \evensidemargin=-38.12677pt
+* \topmargin=-77.12677pt
+* \headheight=14.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=113.81102pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
+[]\TU/NotoSerif(0)/m/n/10.95 Which words or phrases do you most
+ []
+
+[4
+
+] (./handout.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+)
+
+Here is how much of LuaTeX's memory you used:
+ 9026 strings out of 476076
+ 125007,794899 words of node,token memory allocated
+ 743 words of node memory still in use:
+   4 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 111 attribute, 56 glue_spe
+c, 38 attribute_list, 3 write nodes
+   avail lists: 2:15646,3:595,4:288,5:282,6:142,7:8405,9:606,10:8,11:303
+ 31326 multiletter control sequences out of 65536+600000
+ 43 fonts using 13769127 bytes
+ 73i,13n,98p,793b,469s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmsans8-regular.otf
+></usr/local/texlive/2026/texmf-dist/fonts/truetype/google/noto/NotoSerif-Bold.t
+tf></usr/local/texlive/2026/texmf-dist/fonts/truetype/google/noto/NotoSerif-Ital
+ic.ttf></usr/local/texlive/2026/texmf-dist/fonts/truetype/google/noto/NotoSerif-
+Regular.ttf>
+Output written on handout.pdf (4 pages, 57593 bytes).
+
+PDF statistics: 45 PDF objects out of 1000 (max. 8388607)
+ 26 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 1048576)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+
